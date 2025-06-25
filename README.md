@@ -24,7 +24,6 @@ A modern voice assistant built using Python, featuring AI-powered chat, real-tim
 
 ### 🖥️ GUI Interface (Tkinter)
 - 🎙️ Start Listening button
-- 🔴 Stop Listening
 - 📜 Scrollable conversation history
 - 🟢 Status indicator (Idle / Listening)
 
