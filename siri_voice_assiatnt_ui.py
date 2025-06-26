@@ -11,15 +11,14 @@ import edge_tts
 import asyncio
 # import openai
 # from openai import OpenAI
-# load_dotenv() 
+load_dotenv() 
 
-# cohere_key = os.getenv("COHERE_API_KEY")
-# news_api = os.getenv("NEWS_API_KEY")
-news_api="72e45b3a22324b798bad99b02c2ec356"
-cohere_key="4dl0AZm73rTku8nqgdCVnBQJw8pAFBdrZCRYLh45"
+cohere_key = os.getenv("COHERE_API_KEY")
+news_api = os.getenv("NEWS_API_KEY")
+
 co = cohere.Client(cohere_key)
 
-# client = OpenAI(api_key="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")
+
 
 recognizer = sr.Recognizer()
 engine =pyttsx3.init()
