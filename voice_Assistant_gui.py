@@ -10,10 +10,16 @@ import os
 import edge_tts
 import asyncio
 import playsound
+from dotenv import load_dotenv
+
+
+
 
 # API keys
-news_api = "72e45b3a22324b798bad99b02c2ec356"
-cohere_key = "4dl0AZm73rTku8nqgdCVnBQJw8pAFBdrZCRYLh45"
+load_dotenv() 
+
+cohere_key = os.getenv("COHERE_API_KEY")
+news_api = os.getenv("NEWS_API_KEY")
 co = cohere.Client(cohere_key)
 
 # Init
