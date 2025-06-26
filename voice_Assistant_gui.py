@@ -119,7 +119,7 @@ def action_command(command):
         else:
             speak("Getting top headlines")
             fetch_news()
-    elif "chat" in command or "ai" in command:
+    elif "chat" in command.lower() or "ai" in command.lower():
         speak("What would you like to ask?")
         with sr.Microphone() as source:
             audio = recognizer.listen(source, timeout=5)
