@@ -83,6 +83,9 @@ This project combines multiple advanced programming and AI concepts:
 | Async Handling   | `asyncio`            | Asynchronous voice generation flow     |
 
 ---
+## 🎥 Demo Video
+
+[![Watch the video](https://img.youtube.com/vi/MiIJ-227GgI/0.jpg)](https://youtu.be/MiIJ-227GgI)
 
 ## 🛠️ Installation
 
