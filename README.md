@@ -69,6 +69,8 @@ This project combines multiple advanced programming and AI concepts:
 
 ---
 
+
+
 ## 📦 Tech Stack Summary
 
 | Area             | Tool/Library         | Purpose                               |
@@ -83,6 +85,23 @@ This project combines multiple advanced programming and AI concepts:
 | Async Handling   | `asyncio`            | Asynchronous voice generation flow     |
 
 ---
+### 📥 Try It Out (Windows)
+
+You can run the voice assistant instantly — no setup needed!
+
+➡️ [**Download the latest `.exe` from GitHub Releases**](https://github.com/umerkhan-12/Voice_Assistant_siri/releases/latest)  
+➡️ [Direct `.exe` Download (v1.0.0)](https://github.com/umerkhan-12/Voice_Assistant_siri/releases/download/v1.0.0/Siri_Voice_Assistant.exe)
+
+1. Download and double-click the `.exe` file  
+2. Click “Start Listening” and say **“Hey Siri”**
+
+🛡️ **Note**: Windows SmartScreen may show a warning  
+→ Click **“More info” → “Run anyway”**
+
+🎤 Make sure your **microphone is connected**  
+🪟 Only works on **Windows OS** (no Python required)
+
+
 ## 🎥 Demo Video
 
 [![Watch the video](https://img.youtube.com/vi/MiIJ-227GgI/0.jpg)](https://youtu.be/MiIJ-227GgI)
