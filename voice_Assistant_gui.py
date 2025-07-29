@@ -95,47 +95,58 @@ def ask_cohere(prompt):
         speak("Could not respond from AI.")
 
 def action_command(command):
-    update_output("You: " + command)
-    if "search" in command.lower():
-        for name, url in {
-            "youtube": "https://www.youtube.com",
-            "facebook": "https://www.facebook.com",
-            "google": "https://www.google.com",
-            "instagram": "https://www.instagram.com",
-            "github": "https://www.github.com",
-            "stackoverflow": "https://stackoverflow.com",
-            "whatsapp": "https://web.whatsapp.com",
-            "twitter": "https://www.twitter.com",
-            "gmail": "https://mail.google.com",
-            "linkedin": "https://www.linkedin.com"
-        }.items():
-            if name in command.lower():
-                speak(f"Opening {name}")
-                webbrowser.open(url)
-                return
-    elif "play" in command:
-        song = command.replace("play", "")
-        speak(f"Searching {song} on YouTube")
-        webbrowser.open(f"https://www.youtube.com/results?search_query={song}")
-    elif "news" in command:
-        topic = command.replace("news", "").strip()
-        if topic:
-            speak(f"Getting news  {topic}")
-            fetch_news(topic)
+        update_output("You: " + command)
+        if "search" in command.lower():
+            for name, url in {
+                "youtube": "https://www.youtube.com",
+                "facebook": "https://www.facebook.com",
+                "google": "https://www.google.com",
+                "instagram": "https://www.instagram.com",
+                "github": "https://www.github.com",
+                "stackoverflow": "https://stackoverflow.com",
+                "whatsapp": "https://web.whatsapp.com",
+                "twitter": "https://www.twitter.com",
+                "gmail": "https://mail.google.com",
+                "linkedin": "https://www.linkedin.com"
+            }.items():
+                if name in command.lower():
+                    speak(f"Opening {name}")
+                    webbrowser.open(url)
+                    return
+        elif "play" in command:
+            song = command.replace("play", "")
+            speak(f"Searching {song} on YouTube")
+            webbrowser.open(f"https://www.youtube.com/results?search_query={song}")
+        elif "news" in command:
+            topic = command.replace("news", "").strip()
+            if topic:
+                speak(f"Getting news  {topic}")
+                fetch_news(topic)
+            else:
+                speak("Getting top headlines")
+                fetch_news()
+        elif "chat" in command.lower() or "ai" in command.lower():
+            speak("What would you like to ask?")
+            with sr.Microphone() as source:
+                audio = recognizer.listen(source, timeout=5)
+                user_prompt = recognizer.recognize_google(audio)
+                ask_cohere(user_prompt)
+        elif "type with ai" in command.lower():
+            user_input = input("Type your message: ")
+            ask_cohere(user_input)
+        elif "goodbye" in command or "exit" in command:
+            speak("Goodbye!")
+            bool_val=False
+            root.quit()
         else:
-            speak("Getting top headlines")
-            fetch_news()
-    elif "chat" in command.lower() or "ai" in command.lower():
-        speak("What would you like to ask?")
-        with sr.Microphone() as source:
-            audio = recognizer.listen(source, timeout=5)
-            user_prompt = recognizer.recognize_google(audio)
-            ask_cohere(user_prompt)
-    elif "goodbye" in command or "exit" in command:
-        speak("Goodbye!")
-        root.quit()
-    else:
-        speak("Sorry, I didn't catch that.")
+            speak("Sorry, I didn't catch that.")
+
+def chat_assistant():
+    user_input = input("Type your message: ")
+    if "quit" in user_input.lower():
+        speak("Exiting chat assistant.")
+        return
+    ask_cohere(user_input)
 
 def listen():
     try:
@@ -150,8 +161,12 @@ def listen():
                 speak("Yes, how can I help?")
                 audio = recognizer.listen(source, timeout=8,phrase_time_limit=8)
                 command = recognizer.recognize_google(audio)
-                print(command)
-                action_command(command)
+                if "chat" in command.lower() or "assistant" in command.lower():
+                    print ("Chat assistant")
+                    chat_assistant()
+                else:
+                    print(command)
+                    action_command(command)
             else:
                 speak("Say 'Hey Siri' to activate.")
     except Exception as e:

@@ -132,12 +132,16 @@ def action_command(command):
             speak("Getting top headlines.")
             fetch_news()
     # ask cohere or ai 
-    elif "chat" or "with ai" in command.lower():
+    elif "chat with ai" in command.lower():
         speak("What do you want to ask?")
         with sr.Microphone() as source:
             audio = recognizer.listen(source, timeout=5)
             user_prompt = recognizer.recognize_google(audio)
             ask_cohere(user_prompt)
+    # typw with ai
+    elif "type with ai" in command.lower():
+        user_input = input("Type your message: ")
+        ask_cohere(user_input)
     #    if want to exit
     elif "good bye" in command.lower():
          speak("Thank you! Bye bye")
